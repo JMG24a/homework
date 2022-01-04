@@ -1,11 +1,12 @@
 .modal__containder{
     z-index: 2;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(6, 16.5%);
-    height: 102vh;
+    position: fixed;
+    display: flex;
+    top: -10px;
+    left: -10px;
+    bottom: -10px;
+    right: -10px;
     justify-content: center;
-    align-content: center;
-    margin-top: -379px;
-    background-color: rgba(68, 67, 67, 0.4);
+    align-items: center;
+    background-color: rgb(147 147 147 / 39%);
 }

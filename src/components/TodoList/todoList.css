@@ -1,6 +1,8 @@
 .todoList__container{
     width: 90%;
+    height: auto;
     margin: 0 auto;
+    margin-bottom: 30px;
     padding: 5px;
     border-radius: 10px;
     background-color: var(--grey);
