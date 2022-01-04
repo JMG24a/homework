@@ -1,0 +1,7 @@
+.todoCounter__title{
+    width: 80%;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--secondary-soft-color)
+}
