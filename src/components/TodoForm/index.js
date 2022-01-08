@@ -1,14 +1,8 @@
 import React from 'react'
 import './todoForm.css'
 
-import { TodoContext } from '../../App/todoContext';
 
-
-function TodoForm(){
-    const{
-        setModal,
-        onAddTodo
-    } = React.useContext(TodoContext);
+function TodoForm({setModal,onAddTodo}){
 
     const [getTextArea,setTextArea] = React.useState('')
 

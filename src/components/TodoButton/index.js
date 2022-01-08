@@ -1,11 +1,7 @@
 import React from 'react';
-import { TodoContext } from '../../App/todoContext';
 import './todoButton.css'
 
-function TodoButton(props){
-    const{
-        setModal
-    } = React.useContext(TodoContext);
+function TodoButton({setModal}){
 
     const onAdd = () =>{
         setModal(true);

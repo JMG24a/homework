@@ -1,18 +1,18 @@
 import React from 'react'
 import { useLocalStorage } from './useLocalStorage';
 
-const TodoContext = React.createContext();
 
-function TodoProvider(props){
+function useTodoTools(){
 
   const [getSearch,setSearch] = React.useState('');
   const [getModal,setModal] = React.useState(false);
   const {
-        getTodos: getLocal,
-        saveApp: setLocal,
-        getLoading: getLoading,
-        getError: getError
-    } = useLocalStorage('Todo_v1', []);
+      getTodos: getLocal,
+      saveApp: setLocal,
+      getLoading,
+      getError,
+      Sincronized,
+  } = useLocalStorage('Todo_v1', []);
   
   //todoCounter
   const completed = getLocal.filter(todo => !!todo.completed).length;
@@ -57,25 +57,22 @@ function TodoProvider(props){
     setLocal(newTodo);
   }
 
-    return(
-        <TodoContext.Provider value={{
-            completed,
-            total,
-            getLocal,
-            getSearch,
-            setSearch,
-            searchTodos,
-            getLoading,
-            getError,
-            getModal,
-            setModal,
-            onCompleteTodo,
-            onDeleteTodo,
-            onAddTodo
-        }}>
-            {props.children}
-        </TodoContext.Provider>
-    );
+    return({
+        completed,
+        total,
+        getLocal,
+        Sincronized,
+        getSearch,
+        setSearch,
+        searchTodos,
+        getLoading,
+        getError,
+        getModal,
+        setModal,
+        onCompleteTodo,
+        onDeleteTodo,
+        onAddTodo,
+    });
 }
 
-export { TodoProvider,TodoContext }
+export { useTodoTools }

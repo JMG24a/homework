@@ -1,17 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { TodoForm } from '../../components/TodoForm';
-
-
 import './todoModal.css'
 
-function Modal(){
+function Modal(props){
 
     return ReactDOM.createPortal(
         
         <div className='modal__containder'>
-            <TodoForm/>
+            {props.children}
         </div>,
 
         document.getElementById('modal')
