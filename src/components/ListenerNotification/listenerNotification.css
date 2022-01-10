@@ -1,0 +1,12 @@
+.card__notification{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 59%;
+    height: auto;
+    padding: 12px;
+    background-color: #1762a4;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 4px 2px 7px #5c8d96;
+}
