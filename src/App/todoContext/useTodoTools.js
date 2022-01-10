@@ -11,7 +11,7 @@ function useTodoTools(){
       saveApp: setLocal,
       getLoading,
       getError,
-      Sincronized,
+      sincronized,
   } = useLocalStorage('Todo_v1', []);
   
   //todoCounter
@@ -60,8 +60,7 @@ function useTodoTools(){
     return({
         completed,
         total,
-        getLocal,
-        Sincronized,
+        sincronized,
         getSearch,
         setSearch,
         searchTodos,

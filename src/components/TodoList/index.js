@@ -1,14 +1,17 @@
 import React from 'react';
 import './todoList.css';
 
-import {TodoButton} from '../TodoButton'
-
 function TodoList(props){
+
+    const renderF = props.render || props.children
+
     return(
         <section className="todoList__container">
-            <ul className="todoList__ul">
-                {props.children}
-            </ul>
+            {props.getError && props.onError()}
+            {props.getLoading && props.onLoading()}
+            {(!props.getLoading && !props.searchTodos.length && !props.getSearch) && props.onClean()}
+            {(props.getSearch && !props.searchTodos.length) && props.onSearch()}
+            {props.getLoading && props.searchTodos.map(renderF)}
         </section>
     );
 }

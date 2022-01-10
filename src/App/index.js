@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTodoTools } from './todoContext/useTodoTools';
 
+import { TodoHeader } from '../components/TodoHeader'
 import { TodoCounter } from '../components/TodoCounter';
 import { TodoSearch } from '../components/TodoSearch';
 import { TodoList } from '../components/TodoList';
@@ -15,8 +16,7 @@ function App() {
   const{
     completed,
     total,
-    getLocal,
-    Sincronized,
+    sincronized,
     getSearch,
     setSearch,
     searchTodos,
@@ -31,30 +31,50 @@ function App() {
 
   return (
     <React.Fragment>
-        <TodoCounter
-          completed={completed}
-          total={total}
-        />
+        <TodoHeader
+          getLoading={getLoading}
+        >
+          <TodoCounter
+            completed={completed}
+            total={total}
+          />
 
-        <TodoSearch
-          setSearch={setSearch}
-        />
+          <TodoSearch
+            setSearch={setSearch}
+          />
+        </TodoHeader>
 
-        <TodoList>
-          {getError && <p>ocurrio un error</p>}
-          {getLoading && <p>Cargando...</p>}
-          {(!getLoading && !getLocal.length && !getSearch)&&<p>Crea tu primer TODO</p>}
-          {getSearch && <p>Buscando...</p>}
-          {searchTodos.map(todo => (
-            <TodoItem 
+        <TodoList
+          getError={getError}
+          getLoading={getLoading}
+          getSearch={getSearch}
+          searchTodos={searchTodos}
+          onError={()=> <p>ocurrio un error</p>}
+          onLoading={()=> <p>cargando...</p>}
+          onError={()=> <p>ocurrio un error</p>}
+          onClean={()=> <p>Crea un TODO</p>}
+          onSearch={()=> <p>No hay coincidencias con {getSearch}</p>}
+          render={
+            todo => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+                onCompleteTodo={()=>{onCompleteTodo(todo.text)}}
+                onDeleteTodo={()=>{onDeleteTodo(todo.text)}}
+              />
+            )} 
+        >
+          {/*{todo => (
+            <TodoItem
               key={todo.text}
-              text={todo.text} 
+              text={todo.text}
               completed={todo.completed}
               onCompleteTodo={()=>{onCompleteTodo(todo.text)}}
               onDeleteTodo={()=>{onDeleteTodo(todo.text)}}
-          />
-        ))}
-      </TodoList>
+            />
+          )}*/}
+        </TodoList>
 
 
       <TodoButton
@@ -70,7 +90,7 @@ function App() {
         </Modal>
       }
       <ListenerNotificationWithStorageListener
-        Sincronized={Sincronized}
+        sincronized={sincronized}
       />
       
     </React.Fragment>

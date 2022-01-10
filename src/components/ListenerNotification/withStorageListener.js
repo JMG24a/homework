@@ -7,15 +7,17 @@ function WithStorageListener(Wrapped){
         
         window.addEventListener('storage',(change)=>{
             if(change.key === 'Todo_v1'){
-                console.log('hola');
                 setAlert(true);
             }
         });
+
+
 
         return(
             <Wrapped
                 show={getAlert}
                 toggleShow={setAlert}
+                sincronized={props.sincronized}
             />
         );
     }
