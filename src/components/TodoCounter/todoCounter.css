@@ -5,3 +5,7 @@
     font-size: 1.8rem;
     color: var(--secondary-soft-color)
 }
+
+.todoCounter__title--loading{
+    opacity: 25%;
+}

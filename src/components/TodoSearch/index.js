@@ -1,7 +1,7 @@
 import React from 'react';
 import './todoSearch.css'
 
-function TodoSearch({setSearch}){
+function TodoSearch({setSearch,getLoading}){
 
     const onChangeSearch = (event) =>{
         setSearch(event.target.value)
@@ -12,7 +12,7 @@ function TodoSearch({setSearch}){
             className="todoSearch__container"  
         >
             <h3 
-                className="todoSearch__title"
+                className={`todoSearch__title ${!!getLoading && 'todoSearch__title--loading'}`}
             >
                 buscar:
             </h3>
@@ -21,6 +21,7 @@ function TodoSearch({setSearch}){
                 type="text" 
                 placeholder="Cebolla"
                 onChange={onChangeSearch}
+                disabled={!!getLoading}
             />
         </section>
     );
